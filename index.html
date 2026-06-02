@@ -1,0 +1,489 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Our Story – 2018 to 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blush:#f7e8e8;
+  --rose:#e8b4b8;
+  --deeprose:#c47a7f;
+  --gold:#d4a853;
+  --lightgold:#f5e6c8;
+  --beige:#faf5ef;
+  --warmwhite:#fffdf9;
+  --text:#4a3535;
+  --textmid:#7a5a5a;
+  --textsub:#9e7e7e;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Lora',serif;background:var(--beige);color:var(--text);overflow-x:hidden;min-height:100vh;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,245,239,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,168,83,0.2);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--deeprose);font-style:italic;letter-spacing:.5px}
+.nav-links{display:flex;gap:16px}
+.nav-links a{font-size:12px;color:var(--textsub);text-decoration:none;letter-spacing:.5px;font-family:'Lora',serif}
+.nav-links a:active{color:var(--deeprose)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#fdf0f0 0%,#faf5ef 40%,#fef9f0 100%);padding:80px 24px 60px;text-align:center;}
+.hero-ornament{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;}
+.hero-ornament::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,180,184,0.25) 0%,transparent 70%);top:-80px;left:-80px;}
+.hero-ornament::after{content:'';position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,83,0.15) 0%,transparent 70%);bottom:-60px;right:-60px;}
+.hero-date{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-family:'Lora',serif;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,11vw,72px);font-weight:300;line-height:1.1;color:var(--text);margin-bottom:16px;letter-spacing:-0.5px;}
+.hero-title em{font-style:italic;color:var(--deeprose)}
+.hero-subtitle{font-family:'Dancing Script',cursive;font-size:clamp(18px,5vw,26px);color:var(--textmid);margin-bottom:32px;line-height:1.5;}
+.hero-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.hero-years{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.hero-year-pill{font-size:11px;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);border:1px solid rgba(212,168,83,0.3);padding:5px 12px;border-radius:20px;font-family:'Lora',serif;}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;}
+.scroll-cue span{font-size:10px;letter-spacing:2px;color:var(--textsub)}
+.scroll-arrow{width:20px;height:20px;border-right:1px solid var(--rose);border-bottom:1px solid var(--rose);transform:rotate(45deg);animation:scrollBounce 1.5s ease-in-out infinite;}
+@keyframes scrollBounce{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+
+/* SECTION HEADERS */
+.section-header{text-align:center;padding:60px 24px 40px;}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,8vw,40px);font-weight:300;color:var(--text);}
+.section-title em{font-style:italic;color:var(--deeprose)}
+
+/* TIMELINE */
+#timeline{background:var(--warmwhite);padding-bottom:60px}
+.timeline-wrap{max-width:500px;margin:0 auto;padding:0 20px}
+.timeline-year-block{position:relative;padding:0 0 40px 48px;border-left:1px solid rgba(232,180,184,0.4);margin-left:12px;}
+.timeline-year-block:last-child{border-left:1px solid transparent}
+.timeline-dot{position:absolute;left:-7px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--warmwhite);border:2px solid var(--rose);}
+.timeline-year{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--deeprose);margin-bottom:14px;letter-spacing:-0.5px;}
+.timeline-photo{width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;margin-bottom:12px;background:linear-gradient(135deg,#f7e8e8,#faf5ef);position:relative;}
+.timeline-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+.timeline-photo:hover img{transform:scale(1.03)}
+.timeline-photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.timeline-photo-placeholder .ph-icon{font-size:32px;opacity:.3}
+.timeline-photo-placeholder .ph-text{font-size:11px;color:var(--textsub);letter-spacing:1px}
+.timeline-caption{font-size:14px;line-height:1.7;color:var(--textmid);font-style:italic;}
+.tl-tag{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:var(--lightgold);color:var(--gold);padding:3px 8px;border-radius:10px;margin-bottom:8px;}
+
+/* GALLERY */
+#gallery{background:var(--beige);padding-bottom:80px}
+.year-tabs{display:flex;gap:6px;overflow-x:auto;padding:0 20px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.year-tabs::-webkit-scrollbar{display:none}
+.year-tab{flex-shrink:0;font-size:12px;letter-spacing:1.5px;padding:7px 16px;border-radius:20px;border:1px solid rgba(212,168,83,0.3);background:transparent;color:var(--textsub);cursor:pointer;font-family:'Lora',serif;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.year-tab.active{background:var(--deeprose);border-color:var(--deeprose);color:#fff;}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;max-width:600px;margin:0 auto;}
+.gallery-item{border-radius:10px;overflow:hidden;aspect-ratio:1;background:linear-gradient(135deg,#f7e8e8,#faf5ef);cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent;}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+.gallery-item:active img{transform:scale(0.97)}
+.gallery-item-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;}
+.gallery-item-placeholder .ph-num{font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(196,122,127,0.4);font-weight:300;}
+.gallery-item-placeholder .ph-label{font-size:9px;letter-spacing:1px;color:var(--textsub);text-transform:uppercase;}
+.gallery-item .item-overlay{position:absolute;inset:0;background:rgba(74,53,53,0);transition:background .2s;display:flex;align-items:flex-end;padding:8px;}
+.gallery-item:hover .item-overlay{background:rgba(74,53,53,0.1)}
+.load-more-wrap{text-align:center;padding:24px 0 0}
+.load-more-btn{font-family:'Lora',serif;font-size:13px;letter-spacing:2px;color:var(--deeprose);background:transparent;border:1px solid rgba(196,122,127,0.4);padding:11px 28px;border-radius:25px;cursor:pointer;transition:all .2s;}
+.load-more-btn:active{background:var(--blush)}
+.gallery-count{text-align:center;font-size:12px;color:var(--textsub);padding:8px;letter-spacing:.5px;}
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(30,15,15,0.93);flex-direction:column;align-items:center;justify-content:center;}
+#lightbox.open{display:flex}
+.lb-close{position:absolute;top:16px;right:16px;font-size:28px;color:#fff;opacity:.7;cursor:pointer;padding:8px;line-height:1;background:none;border:none;-webkit-tap-highlight-color:transparent;}
+.lb-img-wrap{width:100%;flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:60px 0 80px;}
+#lb-img{max-width:92vw;max-height:calc(100vh - 160px);object-fit:contain;border-radius:8px;user-select:none;}
+.lb-nav{display:flex;gap:32px;align-items:center;padding:0 0 24px;}
+.lb-arrow{font-size:24px;color:#fff;opacity:.6;cursor:pointer;padding:12px;background:none;border:none;-webkit-tap-highlight-color:transparent;}
+.lb-counter{font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(255,255,255,0.5);min-width:60px;text-align:center;}
+.lb-placeholder{width:92vw;height:60vw;max-height:340px;background:linear-gradient(135deg,rgba(247,232,232,0.1),rgba(250,245,239,0.1));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+.lb-placeholder-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(255,255,255,0.3)}
+.lb-placeholder-sub{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px}
+
+/* LETTER */
+#letter{background:linear-gradient(160deg,#fdf8f0,#faf3e8);position:relative;overflow:hidden;padding-bottom:80px;}
+#letter::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(212,168,83,0.06) 27px,rgba(212,168,83,0.06) 28px);pointer-events:none;}
+.letter-wrap{max-width:480px;margin:0 auto;padding:40px 28px;position:relative;}
+.letter-date{font-family:'Dancing Script',cursive;font-size:16px;color:var(--gold);margin-bottom:24px;display:block;}
+.letter-body{font-family:'Lora', Georgia, serif;font-style: italic; font-size:clamp(17px,4.5vw,22px);line-height:1.85;color:var(--textmid);}
+.letter-body p{margin-bottom:20px}
+.letter-sign{font-family:'Dancing Script',cursive;font-size:clamp(20px,5vw,26px);color:var(--deeprose);margin-top:32px;}
+.letter-heart{text-align:center;margin-top:24px;font-size:22px;animation:heartbeat 1.5s ease-in-out infinite;}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+/* CLOSING */
+#closing{min-height:400px;background:linear-gradient(180deg,#faf5ef,#fdf0f0);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden;}
+.closing-message{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,7vw,38px);font-weight:300;color:var(--text);line-height:1.4;margin-bottom:16px;}
+.closing-message em{font-style:italic;color:var(--deeprose)}
+.closing-sub{font-family:'Dancing Script',cursive;font-size:clamp(16px,4.5vw,20px);color:var(--textsub);}
+.closing-year{margin-top:32px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);}
+
+/* PETALS */
+.petal{position:absolute;top:-60px;width:10px;height:14px;border-radius:50% 0 50% 0;opacity:0;animation:petalFall linear infinite;pointer-events:none;}
+@keyframes petalFall{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:.8}25%{transform:translateY(25vh) rotate(90deg) translateX(15px);opacity:.6}50%{transform:translateY(50vh) rotate(180deg) translateX(-10px);opacity:.4}75%{transform:translateY(75vh) rotate(270deg) translateX(12px);opacity:.2}100%{transform:translateY(110vh) rotate(360deg) translateX(-5px);opacity:0}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+footer{background:var(--text);color:rgba(255,255,255,0.4);text-align:center;padding:24px;font-size:11px;letter-spacing:1px;}
+.swipe-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,0.3);pointer-events:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Our Story</span>
+  <div class="nav-links">
+    <a href="#timeline">Timeline</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#letter">Letter</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-date">2018 — 2026</div>
+  <h1 class="hero-title">Our<br><em>Story</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-subtitle">"Some memories are forever."</p>
+  <div class="hero-years">
+    <span class="hero-year-pill">2018</span><span class="hero-year-pill">2019</span><span class="hero-year-pill">2020</span>
+    <span class="hero-year-pill">2021</span><span class="hero-year-pill">2022</span><span class="hero-year-pill">2023</span>
+    <span class="hero-year-pill">2024</span><span class="hero-year-pill">2025</span><span class="hero-year-pill">2026</span>
+  </div>
+  <div class="scroll-cue"><span>scroll</span><div class="scroll-arrow"></div></div>
+</section>
+
+<section id="timeline">
+  <div class="section-header reveal">
+    <span class="section-label">Chapter by chapter</span>
+    <h2 class="section-title">The <em>Timeline</em></h2>
+  </div>
+  <div class="timeline-wrap" id="timeline-wrap"></div>
+</section>
+
+<section id="gallery">
+  <div class="section-header reveal">
+    <span class="section-label">Every moment captured</span>
+    <h2 class="section-title">The <em>Gallery</em></h2>
+  </div>
+  <div class="year-tabs" id="year-tabs"></div>
+  <div class="gallery-count" id="gallery-count"></div>
+  <div class="gallery-grid" id="gallery-grid"></div>
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="load-more-btn" onclick="loadMore()">Load More Memories</button>
+  </div>
+</section>
+
+<section id="letter">
+  <div class="section-header reveal">
+    <span class="section-label">From the heart</span>
+    <h2 class="section-title">A <em>Letter</em></h2>
+  </div>
+  <div class="letter-wrap reveal">
+    <span class="letter-date">June 2026</span>
+    <div class="letter-body">
+      <p>Dear Ammu,</p>
+      <p>I have been sitting with this letter for a long time, not knowing where to begin. But I know I owe you words — honest, heartfelt words — before we truly walk our separate paths.</p>
+      <p>Eight years. Eight years of memories, of laughter, of quiet moments, of growing up together. You were not just a part of my life — you were a chapter I will carry with me forever. And for all of that, I am deeply, truly grateful.</p>
+      <p>Thank you for the warmth you brought into my days. Thank you for the patience you showed me when I didn't deserve it. Thank you for believing in me, for standing by me, and for loving me the way you did. You gave me so much more than I ever acknowledged in the moment, and I am sorry it took losing you for me to see that clearly.</p>
+      <p>I am sorry. I am sorry for the times I fell short. For the moments I was not present enough, not careful enough with your feelings, not the person you needed me to be. You deserved better, and I carry that truth with me — not with guilt, but with the hope that it makes me grow.</p>
+      <p>Wherever life takes you from here, I hope it brings you every happiness you have ever dreamed of. I hope the days ahead are kinder to you than I sometimes was, and I mean that with all my heart — not just with words.</p>
+      <p>This is my final message to you, Ammu.</p>
+      <p>I will not call. I will not try to reach you or find ways to stay connected. Not because I don't care — but because I care too much to make your new beginning harder than it needs to be. You deserve peace. You deserve to step into your future without the weight of my presence pulling at the edges.</p>
+      <p>Thank you for everything, Ammu. For the love, the lessons, all the memories that still makes me smile. I will carry them all with me, always.</p>
+      <p>Take care of yourself. Be happy. You deserve it more than you know.</p>
+    </div>
+    <div class="letter-sign">With love, always, ♡</div>
+    <div class="letter-heart">🌸</div>
+  </div>
+</section>
+
+<section id="closing">
+  <div id="petals-container"></div>
+  <p class="closing-message reveal">Wishing you<br><em>all the happiness</em><br>in the world.</p>
+  <p class="closing-sub reveal">Every day, in every way.</p>
+  <p class="closing-year">2018 — 2026</p>
+</section>
+
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <div class="lb-img-wrap" id="lb-img-wrap">
+    <div class="lb-placeholder" id="lb-placeholder">
+      <div class="lb-placeholder-text" id="lb-ph-num">Photo #1</div>
+      <div class="lb-placeholder-sub">Image not found</div>
+    </div>
+    <img id="lb-img" style="display:none" alt="Memory photo" />
+  </div>
+  <div class="lb-nav">
+    <button class="lb-arrow" onclick="lbPrev()">&#8592;</button>
+    <span class="lb-counter" id="lb-counter">1 / 1</span>
+    <button class="lb-arrow" onclick="lbNext()">&#8594;</button>
+  </div>
+  <div class="swipe-hint">Swipe left or right to navigate</div>
+</div>
+
+<footer>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,0.2);font-style:italic;margin-bottom:6px">Our Story</div>
+  Made with love · 2018–2026
+</footer>
+
+<script>
+// ===== DATA =====
+const TIMELINE_DATA = [
+  { year: 2018, tag: "Where it all began", caption: "The year we first met. A moment, a glance, a smile — and the world quietly shifted. Neither of us knew then what was beginning.", imgSrc: "2018/1.jpg" },
+  { year: 2019, tag: "Finding our rhythm", caption: "Long conversations, late nights, shared laughter. We were learning the shape of each other — and it felt like coming home.", imgSrc: "2019/1.png" },
+  { year: 2020, tag: "Weathering the storm", caption: "The world paused, but we didn't. We found warmth in the stillness and discovered what we truly meant to each other.", imgSrc: "2020/1.jpg" },
+  { year: 2021, tag: "New beginnings", caption: "Adventures taken, promises made quietly. We collected moments like pressed flowers — delicate and kept forever.", imgSrc: "2021/1.jpg" },
+  { year: 2022, tag: "Growing together", caption: "Side by side through change. You were my constant when everything else moved — my favourite part of every ordinary day.", imgSrc: "2022/1.png" },
+  { year: 2023, tag: "Golden moments", caption: "The kind of year that settles into your heart softly. Full of small beautiful things that only we would understand.", imgSrc: "2023/1.jpg" },
+  { year: 2024, tag: "Deep roots", caption: "We had built something real — something that held even in the hard seasons. That kind of love doesn't happen often.", imgSrc: "2024/1.jpg" },
+  { year: 2025, tag: "Still here, still us", caption: "Years in, and you still made me laugh the same way. Some things about us never changed — and I wouldn't have wanted them to.", imgSrc: "2025/1.jpg" },
+  { year: 2026, tag: "And now", caption: "Eight years of you. Eight years of us. Whatever comes next — I carry every moment of this with me. Always.", imgSrc: "2026/1.jpg" }
+];
+
+const YEARS = [2018,2019,2020,2021,2022,2023,2024,2025,2026];
+const PHOTO_COUNTS = {2018:80,2019:24,2020:6,2021:0,2022:30,2023:35,2024:52,2025:122,2026:10};
+const EXTENSIONS = ['jpeg','jpg','png','webp'];
+
+// Build photo list — no src needed, we resolve at render time
+const ALL_PHOTOS = [];
+YEARS.forEach(yr => {
+  const count = PHOTO_COUNTS[yr];
+  for (let i = 1; i <= count; i++) {
+    ALL_PHOTOS.push({ year: yr, index: i });
+  }
+});
+
+// ===== GALLERY STATE =====
+let activeYear = 'all';
+let filteredPhotos = [...ALL_PHOTOS];
+let loadedCount = 0;
+const PAGE_SIZE = 24;
+let lbIndex = 0;
+let lbPhotos = [];
+
+// Try each extension in order; stop at first success, show placeholder on total failure
+function resolveImgSrc(imgEl, year, index, onFail) {
+  const candidates = EXTENSIONS.map(ext => `${year}/${index}.${ext}`);
+  let i = 0;
+  function tryNext() {
+    if (i >= candidates.length) {
+      if (onFail) onFail();
+      return;
+    }
+    imgEl.src = candidates[i++];
+    imgEl.onerror = tryNext;
+    imgEl.onload = () => { imgEl.onerror = null; };
+  }
+  tryNext();
+}
+
+// ===== BUILD TIMELINE =====
+function buildTimeline() {
+  const wrap = document.getElementById('timeline-wrap');
+  TIMELINE_DATA.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'timeline-year-block reveal';
+
+    const photoDiv = document.createElement('div');
+    photoDiv.className = 'timeline-photo';
+
+    if (item.imgSrc) {
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = String(item.year);
+      img.onclick = () => openLightboxYear(item.year);
+      img.src = item.imgSrc;
+      photoDiv.appendChild(img);
+    } else {
+      photoDiv.innerHTML = `<div class="timeline-photo-placeholder"><div class="ph-icon">📷</div><div class="ph-text">Add your photo for ${item.year}</div></div>`;
+    }
+
+    div.innerHTML = `
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">${item.year}</div>
+      <div class="tl-tag">${item.tag}</div>
+    `;
+    div.appendChild(photoDiv);
+    div.insertAdjacentHTML('beforeend', `<p class="timeline-caption">${item.caption}</p>`);
+    wrap.appendChild(div);
+  });
+}
+
+// ===== BUILD YEAR TABS =====
+function buildTabs() {
+  const tabsEl = document.getElementById('year-tabs');
+  const allBtn = document.createElement('button');
+  allBtn.className = 'year-tab active';
+  allBtn.textContent = 'All';
+  allBtn.dataset.year = 'all';
+  allBtn.onclick = () => setYear('all');
+  tabsEl.appendChild(allBtn);
+  YEARS.forEach(yr => {
+    const btn = document.createElement('button');
+    btn.className = 'year-tab';
+    btn.textContent = yr;
+    btn.dataset.year = yr;
+    btn.onclick = () => setYear(yr);
+    tabsEl.appendChild(btn);
+  });
+}
+
+function setYear(yr) {
+  activeYear = yr;
+  document.querySelectorAll('.year-tab').forEach(b => b.classList.toggle('active', b.dataset.year == yr));
+  filteredPhotos = yr === 'all' ? [...ALL_PHOTOS] : ALL_PHOTOS.filter(p => p.year == yr);
+  lbPhotos = filteredPhotos;
+  loadedCount = 0;
+  document.getElementById('gallery-grid').innerHTML = '';
+  loadMore();
+}
+
+// ===== GALLERY LOAD MORE =====
+function loadMore() {
+  const grid = document.getElementById('gallery-grid');
+  const end = Math.min(loadedCount + PAGE_SIZE, filteredPhotos.length);
+  const frag = document.createDocumentFragment();
+
+  for (let i = loadedCount; i < end; i++) {
+    const photo = filteredPhotos[i];
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.onclick = () => openLightbox(i);
+
+    // Placeholder shown while image loads or if all formats fail
+    const placeholder = document.createElement('div');
+    placeholder.className = 'gallery-item-placeholder';
+    placeholder.innerHTML = `<div class="ph-num">${photo.year}</div><div class="ph-label">Memory · ${photo.index}</div>`;
+    item.appendChild(placeholder);
+
+    // Image — always attempt to load
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = `${photo.year} Memory ${photo.index}`;
+    resolveImgSrc(img, photo.year, photo.index, () => {
+      // All formats failed — keep placeholder visible, hide img
+      img.style.display = 'none';
+    });
+    item.appendChild(img);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'item-overlay';
+    item.appendChild(overlay);
+
+    frag.appendChild(item);
+  }
+
+  grid.appendChild(frag);
+  loadedCount = end;
+  updateGalleryUI();
+}
+
+function updateGalleryUI() {
+  document.getElementById('gallery-count').textContent = `Showing ${loadedCount} of ${filteredPhotos.length} memories`;
+  document.getElementById('load-more-wrap').style.display = loadedCount < filteredPhotos.length ? 'block' : 'none';
+}
+
+// ===== LIGHTBOX =====
+function openLightbox(idx) {
+  lbIndex = idx;
+  lbPhotos = filteredPhotos;
+  showLbPhoto();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openLightboxYear(yr) {
+  setYear(yr);
+  openLightbox(0);
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showLbPhoto() {
+  const photo = lbPhotos[lbIndex];
+  const img = document.getElementById('lb-img');
+  const ph = document.getElementById('lb-placeholder');
+  const phNum = document.getElementById('lb-ph-num');
+  document.getElementById('lb-counter').textContent = `${lbIndex + 1} / ${lbPhotos.length}`;
+
+  if (!photo) {
+    img.style.display = 'none';
+    ph.style.display = 'flex';
+    phNum.textContent = 'Photo';
+    return;
+  }
+
+  // Reset handlers before resolving to avoid stale callbacks
+  img.onload = null;
+  img.onerror = null;
+  img.src = '';
+
+  img.style.display = 'block';
+  ph.style.display = 'none';
+
+  resolveImgSrc(img, photo.year, photo.index, () => {
+    // All formats failed in lightbox — show placeholder
+    img.style.display = 'none';
+    ph.style.display = 'flex';
+    phNum.textContent = `${photo.year} · #${photo.index}`;
+  });
+}
+
+function lbNext() { if (lbIndex < lbPhotos.length - 1) { lbIndex++; showLbPhoto(); } }
+function lbPrev() { if (lbIndex > 0) { lbIndex--; showLbPhoto(); } }
+
+// Touch swipe
+let tsX = 0;
+document.getElementById('lb-img-wrap').addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
+document.getElementById('lb-img-wrap').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tsX;
+  if (Math.abs(dx) > 50) { dx < 0 ? lbNext() : lbPrev(); }
+});
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNext();
+  if (e.key === 'ArrowLeft') lbPrev();
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// ===== PETALS =====
+function buildPetals() {
+  const container = document.getElementById('petals-container');
+  const colors = ['#f4c2c2','#ffcba4','#ffd4b2','#f7c6d1','#ffe4e1','#fce4ec'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 8 + Math.random() * 10;
+    p.style.cssText = `left:${Math.random()*100}%;width:${size}px;height:${size*1.4}px;background:${colors[Math.floor(Math.random()*colors.length)]};opacity:0;animation-duration:${4+Math.random()*5}s;animation-delay:${Math.random()*6}s;border-radius:${Math.random()>.5?'50% 0 50% 0':'50% 50% 0 0'};`;
+    container.appendChild(p);
+  }
+}
+
+// ===== SCROLL REVEAL =====
+function setupReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+// ===== INIT =====
+buildTimeline();
+buildTabs();
+setYear('all');
+buildPetals();
+setTimeout(setupReveal, 100);
+</script>
+</body>
+</html>
